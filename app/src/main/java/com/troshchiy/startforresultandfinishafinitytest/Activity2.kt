@@ -8,6 +8,7 @@ import android.widget.Button
 import com.troshchiy.startforresultandfinishafinitytest.DetailsActivity.Companion.REQUEST_CODE
 
 class Activity2 : AppCompatActivity() {
+    private val TAG = getLogTag<Activity2>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +18,7 @@ class Activity2 : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        logW(TAG, "onActivityResult. requestCode: $requestCode, resultCode: $resultCode, data: $data")
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) finishForResult()
     }
 }

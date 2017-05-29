@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 
 class DetailsActivity : AppCompatActivity() {
+    private val TAG = getLogTag<DetailsActivity>()
 
     companion object {
         val REQUEST_CODE = 1111
@@ -21,6 +22,8 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        logW(TAG, "onActivityResult. requestCode: $requestCode, resultCode: $resultCode, data: $data")
+
         if (resultCode != Activity.RESULT_OK || requestCode != REQUEST_CODE) return
 
         find<TextView>(R.id.tv).text = "TADAM!"
