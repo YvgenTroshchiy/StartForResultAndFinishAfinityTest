@@ -18,7 +18,12 @@ class Activity1 : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        logW(TAG, "onActivityResult. requestCode: $requestCode, resultCode: $resultCode, data: $data")
-        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) finishForResult()
+        logW(TAG, "onActivityResult. requestCode: $requestCode, resultCode: $resultCode, data: ${data?.extras}")
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) {
+//            setResult(Activity.RESULT_OK, Intent()
+//                    intent.extras)
+            finish()
+//            finishForResult()
+        }
     }
 }

@@ -12,6 +12,7 @@ class DetailsActivity : AppCompatActivity() {
 
     companion object {
         val REQUEST_CODE = 5566
+        val EXTRA_MESSAGE = "extra_message"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,10 +23,10 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        logW(TAG, "onActivityResult. requestCode: $requestCode, resultCode: $resultCode, data: $data")
+        logW(TAG, "onActivityResult. requestCode: $requestCode, resultCode: $resultCode, data: ${data?.extras}")
 
         if (resultCode != Activity.RESULT_OK || requestCode != REQUEST_CODE) return
 
-        find<TextView>(R.id.tv).text = "TADAM!"
+        find<TextView>(R.id.tv).text = data?.extras?.getString(EXTRA_MESSAGE)
     }
 }

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
+import com.troshchiy.startforresultandfinishafinitytest.DetailsActivity.Companion.EXTRA_MESSAGE
 import com.troshchiy.startforresultandfinishafinitytest.DetailsActivity.Companion.REQUEST_CODE
 
 class Activity2 : AppCompatActivity() {
@@ -18,7 +19,15 @@ class Activity2 : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        logW(TAG, "onActivityResult. requestCode: $requestCode, resultCode: $resultCode, data: $data")
-        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) finishForResult()
+        logW(TAG, "onActivityResult. requestCode: $requestCode, resultCode: $resultCode, data: ${data?.extras}")
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) {
+            setResult(Activity.RESULT_OK, setRideDataToIntent(Intent()))
+            finish()
+//            finishForResult()
+        }
+    }
+
+    private fun setRideDataToIntent(intent: Intent) = intent.apply {
+        putExtra(EXTRA_MESSAGE, "Tra lya lya")
     }
 }
