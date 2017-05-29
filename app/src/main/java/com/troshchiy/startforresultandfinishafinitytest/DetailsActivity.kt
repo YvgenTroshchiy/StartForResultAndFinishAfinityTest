@@ -11,7 +11,7 @@ class DetailsActivity : AppCompatActivity() {
     private val TAG = getLogTag<DetailsActivity>()
 
     companion object {
-        val REQUEST_CODE = 1111
+        val REQUEST_CODE = 44556677
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
